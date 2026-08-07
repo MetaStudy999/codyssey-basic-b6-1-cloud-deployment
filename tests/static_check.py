@@ -58,6 +58,7 @@ assert "--port 22 --cidr 0.0.0.0/0" not in provision
 assert "CONFIRM_CREATE" in provision
 assert "DeleteOnTermination" in provision
 assert "Encrypted" in provision
+assert "--credit-specification CpuCredits=standard" in provision
 
 lib = read("scripts/lib.sh")
 assert '[[ "$SSH_CIDR" != "0.0.0.0/0" ]]' in lib

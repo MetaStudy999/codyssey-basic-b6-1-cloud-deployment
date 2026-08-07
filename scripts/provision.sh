@@ -72,6 +72,7 @@ log "Launching EC2 instance $INSTANCE_TYPE..."
 INSTANCE_ID="$(aws_cli ec2 run-instances \
   --image-id "$AMI_ID" \
   --instance-type "$INSTANCE_TYPE" \
+  --credit-specification CpuCredits=standard \
   --key-name "$KEY_NAME" \
   --subnet-id "$SUBNET_ID" \
   --security-group-ids "$SG_ID" \
