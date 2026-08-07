@@ -1,0 +1,81 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 842 595] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 2042 >>
+stream
+0.8 w
+BT /F1 18 Tf 36 555 Td (B6-1 AWS Target Architecture - ap-northeast-2) Tj ET
+BT /F1 9 Tf 36 536 Td (Target design. Reconcile with actual AWS runtime evidence before PASS.) Tj ET
+35 310 110 95 re S
+BT /F1 13 Tf 58 372 Td (Internet) Tj ET
+BT /F1 10 Tf 52 350 Td (External client) Tj ET
+BT /F1 10 Tf 48 330 Td (GET /health) Tj ET
+190 325 120 65 re S
+BT /F1 12 Tf 214 364 Td (Internet Gateway) Tj ET
+BT /F1 10 Tf 222 344 Td (B6-1 IGW) Tj ET
+350 165 440 300 re S
+BT /F1 13 Tf 365 445 Td (VPC 10.61.0.0/16) Tj ET
+385 230 355 165 re S
+BT /F1 12 Tf 400 376 Td (Public Subnet 10.61.1.0/24) Tj ET
+BT /F1 9 Tf 400 357 Td (Map public IPv4 on launch: enabled) Tj ET
+405 275 145 60 re S
+BT /F1 10 Tf 420 315 Td (Route Table) Tj ET
+BT /F1 9 Tf 418 295 Td (0.0.0.0/0 -> IGW) Tj ET
+575 275 145 60 re S
+BT /F1 10 Tf 590 315 Td (Security Group) Tj ET
+BT /F1 8 Tf 586 298 Td (80 <- 0.0.0.0/0) Tj ET
+BT /F1 8 Tf 586 284 Td (22 <- learner CIDR) Tj ET
+475 185 180 65 re S
+BT /F1 12 Tf 530 228 Td (EC2) Tj ET
+BT /F1 9 Tf 500 210 Td (Ubuntu 24.04 + Nginx) Tj ET
+BT /F1 8 Tf 498 195 Td (t3.micro \(verify eligibility\)) Tj ET
+145 357 m 190 357 l S
+190 357 m 182 362 l S
+190 357 m 182 352 l S
+310 357 m 385 357 l S
+385 357 m 377 362 l S
+385 357 m 377 352 l S
+550 275 m 550 252 l S
+550 252 m 542 257 l S
+550 252 m 542 247 l S
+647 275 m 620 252 l S
+620 252 m 628 257 l S
+620 252 m 628 247 l S
+475 217 m 420 217 l S
+420 217 m 428 222 l S
+420 217 m 428 212 l S
+35 95 305 130 re S
+BT /F1 11 Tf 50 205 Td (IAM operator / role \(control plane\)) Tj ET
+BT /F1 9 Tf 50 185 Td (- EC2/VPC/network actions only) Tj ET
+BT /F1 9 Tf 50 168 Td (- region constrained to ap-northeast-2) Tj ET
+BT /F1 9 Tf 50 151 Td (- no AdministratorAccess) Tj ET
+BT /F1 9 Tf 50 125 Td (Not in packet data path; controls AWS API/console actions.) Tj ET
+365 95 425 55 re S
+BT /F1 10 Tf 380 130 Td (Base scope: one EC2, one public subnet, no NAT/ALB/RDS, no Elastic IP allocation.) Tj ET
+BT /F1 9 Tf 380 112 Td (Cleanup tracks EC2, EBS, EIP\(N/A unless created\), IGW, VPC + subnet/route/SG.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000002334 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+2404
+%%EOF

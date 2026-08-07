@@ -1,0 +1,15 @@
+# Local runtime state / credentials
+.state/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials
+config
+
+# Python
+__pycache__/
+*.pyc
