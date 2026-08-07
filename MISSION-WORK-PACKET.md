@@ -65,11 +65,11 @@ AWS 서울 리전에서 VPC 기반 public network와 EC2 웹 서버를 최소 �
 
 ### Required Deliverables
 
-- [ ] `docs/architecture.(png|pdf)` 1개
+- [x] `docs/architecture.(png|pdf)` 1개
 - [ ] 외부 접속 검증 방식 A 또는 B와 URL/IP를 README에 기록
 - [ ] 외부 접속 결과 스크린샷 1장 이상
 - [ ] `docs/troubleshooting.(md|pdf)` 1개, 실제 사례 최소 1건
-- [ ] `docs/cleanup-checklist.md` 1개
+- [x] `docs/cleanup-checklist.md` 1개
 
 ### Required Functions / Behaviors
 
@@ -108,23 +108,23 @@ AWS 서울 리전에서 VPC 기반 public network와 EC2 웹 서버를 최소 �
 
 | ID | Requirement | Source | Location | Implementation | Test | Evidence | Status |
 |---|---|---|---|---|---|---|---|
-| REQ-B6-1-001 | VPC/Public Subnet/IGW/route 구성 | Mission PDF | §4.1 | planned automation + runtime | AWS describe | architecture + console/CLI | TODO |
-| REQ-B6-1-002 | EC2/SSH/web server/localhost 200 | Mission PDF | §4.2 | planned automation | SSH/curl | runtime capture | TODO |
-| REQ-B6-1-003 | SG 80 public, 22 restricted, all-port public 금지 | Mission PDF | §4.3 | planned automation | SG inspect | runtime capture | TODO |
-| REQ-B6-1-004 | IAM least privilege, no AdministratorAccess | Mission PDF | §4.4 | policy template + Human attach | IAM inspect | runtime capture | TODO |
-| REQ-B6-1-005 | 외부 검증 A/B | Mission PDF | §4.5 | Method B `/health` | external curl | screenshot | TODO |
-| REQ-B6-1-006 | cleanup / cost safety | Mission PDF | §4.6, §7 | cleanup script + checklist | resource inventory | cleanup checklist | TODO |
-| REQ-B6-1-007 | architecture diagram | Mission PDF | §2.1 | target diagram | visual review | `docs/architecture.pdf` | TODO |
-| REQ-B6-1-008 | troubleshooting actual case | Mission PDF | §2.3 | runtime template | hypothesis -> verification | report | TODO |
+| REQ-B6-1-001 | VPC/Public Subnet/IGW/route 구성 | Mission PDF | §4.1 | automation prepared + runtime pending | AWS describe | architecture + console/CLI | NEEDS-RUNTIME |
+| REQ-B6-1-002 | EC2/SSH/web server/localhost 200 | Mission PDF | §4.2 | automation prepared | SSH/curl | runtime capture | NEEDS-RUNTIME |
+| REQ-B6-1-003 | SG 80 public, 22 restricted, all-port public 금지 | Mission PDF | §4.3 | automation prepared | SG inspect | runtime capture | NEEDS-RUNTIME |
+| REQ-B6-1-004 | IAM least privilege, no AdministratorAccess | Mission PDF | §4.4 | policy template tested + Human attach | IAM inspect | runtime capture | NEEDS-RUNTIME |
+| REQ-B6-1-005 | 외부 검증 A/B | Mission PDF | §4.5 | Method B `/health` prepared | external curl | screenshot | NEEDS-RUNTIME |
+| REQ-B6-1-006 | cleanup / cost safety | Mission PDF | §4.6, §7 | cleanup script + checklist tested | resource inventory | cleanup checklist | NEEDS-RUNTIME |
+| REQ-B6-1-007 | architecture diagram | Mission PDF | §2.1 | target diagram | visual review | `docs/architecture.pdf` | TESTED |
+| REQ-B6-1-008 | troubleshooting actual case | Mission PDF | §2.3 | runtime template prepared | hypothesis -> verification | report | NEEDS-RUNTIME |
 
 ## 7. Evaluation Mapping
 
 | Evaluation ID | Criterion | Related Requirement | Validation | Evidence | Status |
 |---|---|---|---|---|---|
-| EVA-1 | 인프라 구성/외부 접속/cleanup | 001-006 | AWS CLI + SSH + external curl | screenshots + checklist | TODO |
-| EVA-2 | 구조/설계 설명 | 001,003,005,006,007 | architecture/readme explanation | architecture + learning notes | TODO |
-| EVA-3 | 핵심 원리 이해 | 001,003,004,008 | explanation checklist | learning notes + report | TODO |
-| EVA-4 | 문제 해결/확장 대응 | 004,008 | troubleshooting + extension explanation | report + learning notes | TODO |
+| EVA-1 | 인프라 구성/외부 접속/cleanup | 001-006 | AWS CLI + SSH + external curl | screenshots + checklist | NEEDS-RUNTIME |
+| EVA-2 | 구조/설계 설명 | 001,003,005,006,007 | architecture/readme explanation | architecture + learning notes | NEEDS-RUNTIME |
+| EVA-3 | 핵심 원리 이해 | 001,003,004,008 | explanation checklist | learning notes + report | NEEDS-RUNTIME |
+| EVA-4 | 문제 해결/확장 대응 | 004,008 | troubleshooting + extension explanation | report + learning notes | NEEDS-RUNTIME |
 
 ## 8. Repository Baseline
 
@@ -207,9 +207,9 @@ Harness:
 
 | Test | Requirement | Method | Expected | Status |
 |---|---|---|---|---|
-| Shell syntax | scripts | `bash -n` | all pass | TODO |
-| IAM policy JSON | REQ-004 | JSON parse + action checks | valid/no admin | TODO |
-| Static contract | REQ-001..008 | `python tests/static_check.py` | pass | TODO |
+| Shell syntax | scripts | `bash -n` | all pass | PASS |
+| IAM policy JSON | REQ-004 | JSON parse + action checks | valid/no admin | PASS |
+| Static contract | REQ-001..008 | `python tests/static_check.py` | pass | PASS |
 | AWS preflight | REQ-004/constraints | Human `scripts/preflight.sh` | non-root, Seoul, key/cidr valid | NEEDS-RUNTIME |
 | Network/EC2 | REQ-001..003 | AWS CLI + SSH/curl | required resources/200 | NEEDS-RUNTIME |
 | External health | REQ-005 | external curl | HTTP 200 + `OK` | NEEDS-RUNTIME |
@@ -230,7 +230,7 @@ Harness:
 
 | Evidence | Requirement/Evaluation | Capture Method | Location | Status |
 |---|---|---|---|---|
-| architecture | REQ-007/EVA-2 | generated diagram, reconcile with runtime | `docs/architecture.pdf` | TODO |
+| architecture | REQ-007/EVA-2 | generated diagram, reconcile with runtime | `docs/architecture.pdf` | TESTED |
 | external health | REQ-005/EVA-1 | browser/curl screenshot | `evidence/` | NEEDS-RUNTIME |
 | network/SG | REQ-001/003 | console or CLI screenshot | `evidence/` | NEEDS-RUNTIME |
 | IAM | REQ-004 | console/CLI screenshot | `evidence/` | NEEDS-RUNTIME |
@@ -242,13 +242,32 @@ Harness:
 | Gate | Exit Condition | Status |
 |---|---|---|
 | G1 SOURCE | source state/mode/gap/provenance confirmed | `PASS` |
-| G2 BUILD | required non-runtime implementation exists | TODO |
-| G3 TEST | static/automatable tests pass | TODO |
-| G4 REVIEW | BLOCKER=0, MAJOR=0 for prepared harness | TODO |
+| G2 BUILD | required non-runtime implementation exists | `PASS` |
+| G3 TEST | static/automatable tests pass | `PASS` |
+| G4 REVIEW | BLOCKER=0, MAJOR=0 for prepared harness | `PASS` |
 | G5 RUNTIME | actual AWS checks complete | `NEEDS-RUNTIME` |
 | G6 EVIDENCE | actual required evidence complete | `NEEDS-RUNTIME` |
-| G7 LEARN | source-aligned learning notes complete | TODO |
+| G7 LEARN | source-aligned learning notes complete | `PASS` |
 | G8 MERGE | Mission PR/merge complete after runtime/evidence | TODO |
+
+## 16.1 G3/G4 Actual Result
+
+AI-verifiable checks executed against byte-identical local copies of the branch blobs:
+
+```text
+python3 tests/static_check.py                         -> PASS
+for f in scripts/*.sh; do bash -n "$f"; done         -> PASS
+python3 -m json.tool iam/b6-1-operator-policy.json   -> PASS
+```
+
+Branch blob SHAs were compared with local `git hash-object` values, including `docs/architecture.pdf`, before accepting these results.
+
+Bounded review result:
+
+- BLOCKER: `0`
+- MAJOR: `0` remaining in the AI-prepared harness
+- Corrected during review: raw `file://` EC2 user-data handling, dynamic AMI root-device lookup, cleanup dependency retries, narrower explicit EC2 Describe actions, and T3 `CpuCredits=standard` cost control.
+- External independent agent was not invoked in this environment; this is recorded rather than falsely claiming an independent audit. G5/G6 remain the decisive Human Runtime gates.
 
 ## 17. STOP Rule
 

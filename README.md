@@ -2,7 +2,7 @@
 
 Codyssey Basic B6-1 — **내가 만든 웹사이트를 인터넷에 올려 누구나 쓰게 하기**
 
-> Current workcell status: **G1 PASS / AI-verifiable build in progress / AWS runtime NEEDS-RUNTIME**. No cloud deployment is claimed until actual AWS evidence exists.
+> Current workcell status: **G1-G4 PASS, G5-G6 NEEDS-RUNTIME, G7 PASS, G8 TODO**. No cloud deployment is claimed until actual AWS evidence exists.
 
 ## Source
 
@@ -115,11 +115,11 @@ Actual evaluated URL/IP: **NEEDS-RUNTIME — do not insert a guessed address.**
 
 | Deliverable | Current status |
 |---|---|
-| `docs/architecture.pdf` | IMPLEMENTED as target design; reconcile after runtime |
+| `docs/architecture.pdf` | TESTED as target design; reconcile after runtime |
 | external access screenshot | NEEDS-RUNTIME |
 | `docs/troubleshooting.md` | IMPLEMENTED template / actual incident NEEDS-RUNTIME |
 | `docs/cleanup-checklist.md` | IMPLEMENTED / actual cleanup NEEDS-RUNTIME |
-| IAM least-privilege template | IMPLEMENTED / actual attachment NEEDS-RUNTIME |
+| IAM least-privilege template | TESTED / actual attachment NEEDS-RUNTIME |
 | AWS VPC/EC2/SG runtime | NEEDS-RUNTIME |
 
 ## Cleanup rule
