@@ -1,0 +1,4 @@
+# B6-1 — Ubuntu 24.04 mission-specific APT packages
+# Local Ubuntu packages support rehearsal; actual AWS resources/Evidence remain mandatory where required.
+openssh-client
+nginx
